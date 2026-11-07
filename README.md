@@ -58,11 +58,11 @@ Each row says what ran, where it ran, and the result. Nothing is listed as passe
 | pytest, 26 tests (defect recall, idempotency, rejection, rollback, suppression properties, hand-built definition cases, HTML structure, no IDs on public pages) | Local, Linux, Python 3.12.13, 2026-11-07 | 26 passed |
 | dbt build: 11 models, 9 dbt tests | Local, inside `k12att demo` and pytest | All passed |
 | ruff check, ruff format --check, mypy --strict | Local | Clean |
-| axe-core 4.14.0 (WCAG 2.0/2.1 A and AA tags) on all 11 pages | Local, Google Chrome headless via Playwright | 0 violations (map page checked without the ArcGIS SDK, which could not load locally) |
+| axe-core 4.14.0 (WCAG 2.0/2.1 A and AA tags) on all 11 pages | Local, Google Chrome headless via Playwright | 0 violations locally (map page without the ArcGIS SDK, which could not load there) and in CI (SDK reachable; the map may not have finished rendering when axe ran) |
 | Visual check of `index.html` | Local screenshot | Rendered as intended |
 | GitHub Actions CI: lint and types, 25 tests, demo + axe-core (0 violations on 10 pages) | GitHub Actions, [run 42413724416](https://github.com/AaronJAdler/K12AttendanceReportingPipeline/actions/runs/42413724416), 2026-11-07 | All 3 jobs passed |
 | GitHub Pages deploy | GitHub Actions, same run (deploy re-run after Pages was enabled) | Passed; deployed to https://aaronjadler.github.io/K12AttendanceReportingPipeline/ |
-| Live site opened in a browser | Not yet done from the build environment | |
+| Live site opened in a browser: overview, readiness, map (8 points drawn, popup opens) | Claude desktop app's built-in browser, 2026-11-07 | Works as intended |
 | `k12att calibrate` against a real CDE file | Not yet run | Tested only on a hand-made fixture in CDE's documented layout; cde.ca.gov was not reachable from the build environment |
 | Manual keyboard and screen-reader pass | Not yet done | |
 | Mermaid diagram in `docs/architecture.md` | Local, mermaid-cli 11 | Rendered without errors |
