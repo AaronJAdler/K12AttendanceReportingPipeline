@@ -172,6 +172,9 @@ def _page(
     return (
         '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+        '<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 '
+        "viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 "
+        'fill=%22%23e76f51%22/%3E%3C/svg%3E">\n'
         f"<title>{escape(title)} | {T['site_title']}</title>\n<style>{CSS}</style>\n"
         f"{head_extra}</head>\n<body>\n"
         '<a class="skip" href="#main">Skip to main content</a>\n'
@@ -497,7 +500,7 @@ def _school_features(con: duckdb.DuckDBPyConnection, cells: list[Cell]) -> list[
                     "rate_band": _band(rate)[0],
                     "fatal_latest_batch": int(fatal.get(c.entity, 0)),
                     "page": f"school-{c.entity}.html",
-                    "synthetic": True,
+                    "data": "synthetic",
                 },
             }
         )
@@ -518,6 +521,7 @@ const layer = new GeoJSONLayer({
   renderer: {
     type: "class-breaks",
     field: "rate_pct",
+    legendOptions: { title: "Chronically absent (% of eligible)" },
     classBreakInfos: [
       band(0, 19.999, "__C0__", "Under 20%"),
       band(20, 24.999, "__C1__", "20-25%"),
@@ -586,7 +590,7 @@ def _map_page(features: list[dict[str, object]]) -> str:
         '<section class="card" aria-labelledby="map-h"><h2 id="map-h">Where chronic absenteeism '
         'is highest</h2><p class="hint">Select a circle for details. The school locations are '
         "invented and do not match any real school.</p>"
-        f'<arcgis-map basemap="osm" center="{MAP_CENTER[0]},{MAP_CENTER[1]}" zoom="12" '
+        f'<arcgis-map basemap="osm" center="{MAP_CENTER[0]},{MAP_CENTER[1]}" zoom="11" '
         'aria-label="Map of the eight fictional schools, colored by chronic absenteeism rate">'
         '<arcgis-zoom slot="top-left"></arcgis-zoom><arcgis-home slot="top-left"></arcgis-home>'
         '<arcgis-legend slot="bottom-right"></arcgis-legend>'

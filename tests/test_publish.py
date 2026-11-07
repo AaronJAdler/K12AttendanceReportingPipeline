@@ -49,7 +49,7 @@ def test_map_geojson_has_every_school_and_no_student_ids(pipeline: Path) -> None
     data = json.loads((pipeline / "site" / "schools.geojson").read_text())
     feats = data["features"]
     assert len(feats) == 8
-    assert all(f["properties"]["synthetic"] is True for f in feats)
+    assert all(f["properties"]["data"] == "synthetic" for f in feats)
     text = json.dumps(data)
     assert not re.search(r"\bL1\d{5}\b", text)
     assert not re.search(r"\b4\d{9}\b", text)
