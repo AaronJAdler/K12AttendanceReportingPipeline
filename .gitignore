@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.duckdb
+*.duckdb.wal
+data/
+site/
+private/
+a11y-report.json
+node_modules/
+dbt/target/
+dbt/logs/
+logs/
+.hypothesis/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

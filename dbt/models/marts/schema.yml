@@ -1,0 +1,22 @@
+version: 2
+models:
+  - name: fct_student_school_year
+    columns:
+      - name: ssid
+        tests: [not_null]
+      - name: grade_span
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['GRTKKN', 'GR13', 'GR46', 'GR78', 'GR912']
+  - name: fct_student_district_year
+    columns:
+      - name: ssid
+        tests: [unique, not_null]
+  - name: mart_chronic_absenteeism
+    columns:
+      - name: aggregate_level
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['S', 'D']

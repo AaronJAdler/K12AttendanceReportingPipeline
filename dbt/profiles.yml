@@ -1,0 +1,7 @@
+k12att:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: "{{ env_var('K12ATT_DB', 'warehouse.duckdb') }}"
+      threads: 1

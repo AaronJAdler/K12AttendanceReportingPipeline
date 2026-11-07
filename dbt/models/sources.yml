@@ -1,0 +1,11 @@
+version: 2
+sources:
+  - name: raw
+    schema: main
+    tables:
+      - name: batches
+      - name: senr
+      - name: sinf
+      - name: stas
+      - name: sinc
+      - name: validation_results

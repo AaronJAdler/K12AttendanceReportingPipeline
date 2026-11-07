@@ -1,0 +1,12 @@
+{
+  "name": "k12-attendance-reporting",
+  "description": "axe-core for the accessibility check",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "devDependencies": {
+    "axe-core": "^4.14.0"
+  },
+  "private": true
+}
