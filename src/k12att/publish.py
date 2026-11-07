@@ -32,6 +32,7 @@ DIMENSIONS = {
 }
 ORDER = list(DIMENSIONS)
 # Rate bands used on the map and the school table. Each band also has a text label.
+MARKER_ALPHA = 0.6  # map circles are partly transparent, with no outline
 BANDS = (
     (0.0, 20.0, "Under 20%", "#1d8f7e"),
     (20.0, 25.0, "20-25%", "#c98a12"),
@@ -512,7 +513,7 @@ MAP_SCRIPT = """
 const GeoJSONLayer = await $arcgis.import("@arcgis/core/layers/GeoJSONLayer.js");
 const band = (min, max, color, label) => ({
   minValue: min, maxValue: max, label,
-  symbol: { type: "simple-marker", color, outline: { color: "#ffffff", width: 2 } }
+  symbol: { type: "simple-marker", color, outline: { color: [0, 0, 0, 0], width: 0 } }
 });
 const layer = new GeoJSONLayer({
   url: "schools.geojson",
@@ -566,11 +567,12 @@ mapEl.map.add(layer);
 def _map_page(features: list[dict[str, object]]) -> str:
     script = MAP_SCRIPT
     for i, (_, _, _, color) in enumerate(BANDS):
-        script = script.replace(f"__C{i}__", color)
+        r, g, b = (int(color[k : k + 2], 16) for k in (1, 3, 5))
+        script = script.replace(f'"__C{i}__"', f"[{r}, {g}, {b}, {MARKER_ALPHA}]")
     legend = (
         '<ul class="legend" aria-label="Map colors">'
         + "".join(
-            f'<li><span style="background:{color}" aria-hidden="true"></span>{label}</li>'
+            f'<li><span style="background:{color};opacity:{MARKER_ALPHA}" aria-hidden="true"></span>{label}</li>'
             for _, _, label, color in BANDS
         )
         + "<li>Circle size: eligible students</li></ul>"
