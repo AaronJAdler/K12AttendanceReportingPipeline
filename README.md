@@ -1,4 +1,8 @@
-# k12-attendance-reporting
+# K12 Attendance Reporting Pipeline
+
+[![CI](https://github.com/AaronJAdler/K12AttendanceReportingPipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/AaronJAdler/K12AttendanceReportingPipeline/actions/workflows/ci.yml)
+
+**Live dashboard:** https://aaronjadler.github.io/K12AttendanceReportingPipeline/
 
 A batch pipeline that turns CALPADS-shaped enrollment and attendance files into validated chronic-absenteeism reports and an accessible static dashboard.
 
@@ -19,8 +23,8 @@ A batch pipeline that turns CALPADS-shaped enrollment and attendance files into 
 Windows (PowerShell), with [uv](https://docs.astral.sh/uv/) and Node 22 installed:
 
 ```powershell
-git clone https://github.com/AaronJAdler/k12-attendance-reporting
-cd k12-attendance-reporting
+git clone https://github.com/AaronJAdler/K12AttendanceReportingPipeline
+cd K12AttendanceReportingPipeline
 uv sync
 uv run k12att demo              # generate 3 batches, load, dbt build, publish
 start site\index.html           # open the dashboard
