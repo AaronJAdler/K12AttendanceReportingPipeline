@@ -590,10 +590,9 @@ def _map_page(features: list[dict[str, object]]) -> str:
         '<section class="card" aria-labelledby="map-h"><h2 id="map-h">Where chronic absenteeism '
         'is highest</h2><p class="hint">Select a circle for details. The school locations are '
         "invented and do not match any real school.</p>"
-        f'<arcgis-map basemap="osm" center="{MAP_CENTER[0]},{MAP_CENTER[1]}" zoom="11" '
+        f'<arcgis-map basemap="osm" center="{MAP_CENTER[0]},{MAP_CENTER[1]}" zoom="12" '
         'aria-label="Map of the eight fictional schools, colored by chronic absenteeism rate">'
         '<arcgis-zoom slot="top-left"></arcgis-zoom><arcgis-home slot="top-left"></arcgis-home>'
-        '<arcgis-legend slot="bottom-right"></arcgis-legend>'
         '<arcgis-popup slot="popup"></arcgis-popup></arcgis-map>'
         f"{legend}"
         '<p class="hint">Map built with the ArcGIS Maps SDK for JavaScript 5.1 on an '
